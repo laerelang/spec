@@ -14,10 +14,11 @@ Features:
 * Optional passing of lambdas by block after function invocation
 * Parameter modifiers (mut/mutable, lzy/lazy (Evaluates on first use and gets cached), dyn/dynamic value (Like lazy but w/o cache))
 
-Possible additions: 
+Additions: 
 [ ] object literals `{key: value}`
 [ ] array literals `[a, b, c]`
 [ ] tuple literals `(a, b, c)`
+[ ] property readers `a.b.c`
 
 Examples:
 ```js
