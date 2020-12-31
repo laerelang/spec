@@ -55,13 +55,14 @@ primitive -> string
 
 string -> "\"" stringpart:* "\""
 
-stringpart -> [a-zA-Z0-9!@#$%^&*()\[\]+=_<>?,./`~ \t\n\r-]
+stringpart -> [a-zA-Z0-9!@#%^&*()\[\]+=_<>?,./`~ \t\n\r-]
   | "\\\u" hex hex hex hex
   | "\\\x" hex hex
   | "\\t"
   | "\\n"
   | "\\r"
   | "\\\""
+  | "\\$"
   | "$" identifier
   | "${" statement "}"
 
