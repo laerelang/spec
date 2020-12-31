@@ -21,7 +21,7 @@ Possible additions:
 
 Examples:
 ```js
-fn("sum", "dyn param1", "param2") {
+fn('sum', 'dyn param1', 'param2') {
   return (std.add(param1, param2))
 }
 
@@ -53,9 +53,9 @@ listPart -> statement
 primitive -> string
   | number
 
-string -> "\"" stringpart:* "\""
+string -> "'" stringpart:* "'"
 
-stringpart -> [a-zA-Z0-9!@#%^&*()\[\]+=_<>?,./`~ \t\n\r-]
+stringpart -> [a-zA-Z0-9!@#%^&*()\[\]+=_<>?,./`;:"~{} \t\n\r-]
   | "\\\u" hex hex hex hex
   | "\\\x" hex hex
   | "\\t"
@@ -63,6 +63,7 @@ stringpart -> [a-zA-Z0-9!@#%^&*()\[\]+=_<>?,./`~ \t\n\r-]
   | "\\r"
   | "\\\""
   | "\\$"
+  | "\\'"
   | "$" identifier
   | "${" statement "}"
 
