@@ -32,12 +32,17 @@ print(sum(1, 3))
 Grammar:
 ```nearley
 
-program -> null
-  | program _ statement
+MAIN -> _ statement _  
+  | _ program _
+
+program -> statement
+  | program __ statement
 
 statement -> functionCall
   | primitive
-  | value {}
+  | value 
+  
+value -> identifier
 
 functionCall -> baseFunctionCall "{" _ program _ "}"
   | baseFunctionCall
@@ -57,8 +62,8 @@ primitive -> string
 string -> "'" stringpart:* "'"
 
 stringpart -> [a-zA-Z0-9!@#%^&*()\[\]+=_<>?,./`;:"~{} \t\n\r-]
-  | "\\\u" hex hex hex hex
-  | "\\\x" hex hex
+  | "\\u" hex hex hex hex
+  | "\\x" hex hex
   | "\\t"
   | "\\n"
   | "\\r"
@@ -79,5 +84,6 @@ identifier -> [a-zA-Z0-9_]:+
 
 _ -> [\t\n\r\s]:*
 __ -> [\t\n\r\s]:+
+
 
 ```
